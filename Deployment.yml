@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: os-project
+spec:
+  selector:
+    matchLabels:
+      name: my-web-app
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        name: my-web-app
+    spec:
+      containers:
+      - name: myapp
+        image: amrmousa1682/os-project
+        imagePullPolicy: IfNotPresent
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80
